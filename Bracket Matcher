@@ -1,0 +1,33 @@
+mystr="(coder)(byte)"
+
+lcount=0
+rcount=0
+for i in mystr:
+    #print(i)
+    if i == "(":
+        lcount+=1
+    if i == ")":
+        rcount+=1
+#print(lcount, rcount)
+
+if lcount == rcount and mystr[0] != ")":
+    print("there's an even number of ( and )s")
+else:
+    print("invalid input")
+
+###
+mystr = "(coder)(byte)"
+
+count = 0
+for i in mystr:
+    if i == "(":
+        count += 1
+    elif i == ")":
+        count -= 1
+    if count < 0:
+        break
+
+if count == 0:
+    print("there's an even number of ( and )s")
+else:
+    print("invalid input")
