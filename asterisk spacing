@@ -1,0 +1,33 @@
+#first method
+x = ["*", "*", "*", "*", "*", "*", "*"]
+for i in x[:]:
+    if i == "*":
+        x.remove(i)
+    print("".join(x))
+
+for i in reversed(range(13)):
+    print("*" * i)
+
+#second method
+x="*"
+n=int(input("enter a number: "))
+for i in range(n,0,-1):
+    print(i*x)
+
+
+#third method
+for y in range(8,0,-1):
+    for x in range(y):
+        print("*", end="")
+    print()
+
+
+#fourth method
+number_of_asterisks = 10
+def draw(number_of_asterisks):
+    for i in range(number_of_asterisks):
+        asterisk = ""
+        for _ in range(number_of_asterisks-i):
+            asterisk += "*"
+        print(asterisk)
+draw(number_of_asterisks)
