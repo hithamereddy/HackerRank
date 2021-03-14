@@ -1,0 +1,23 @@
+import random
+
+number=random.randint(1, 50)
+chances = 0
+
+print("guess a number between 1 and 50: ")
+
+while chances <15:
+
+    guess = int(input())
+    if guess == number:
+        print("hithit approves™")
+        break
+    elif guess < number :
+        print ("your guess was too low, try again: ")
+    else:
+        print ("your guess was too high, try again: ")
+
+    chances += 1
+
+if not chances <15 :
+    print("ur still bad and a loser 🌭")
+    print("the number was", number)
