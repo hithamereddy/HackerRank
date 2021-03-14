@@ -1,0 +1,76 @@
+#FIRST METHOD
+from sys import exit
+#from module sys, take function exit
+#if you have an infinite loop and you want to exit it based on a condition, then use the exit function
+#you can just import sys and use sys.exit() too
+#you can't just import exit because the function is in the sys module
+def check_number(number):
+    if number % 2 == 0:
+    #% because all even numbers when divided by 2 don't have a remainder
+    #if odd number wanted - number % 2 == 1
+    #the modulus operator determines the remainder of a division operation
+    #instead of returning the result of the division, the modulo operation returns the whole number remainder.
+        print(number // 2)
+    #floor division divides and returns the integer value of the quotient. it dumps the digits after the decimal.
+        return (number // 2)
+    #the value that a function call evaluates to is called the "return value" of the function
+    if number <= 0 or number == 0:
+        print('Thank you for playing Hailstone.')
+        exit()
+    else:
+        print(number * 3 + 1)
+        return number * 3 + 1
+def loop_count(number):
+    count = 0
+    while number != 1:
+        count += 1
+        number = check_number(number)
+    return count
+if __name__ == "__main__":
+#name is a special built in variable which evaluates to the name of the current module
+#if a module is being run directly (from command line) then name is set to the string main
+    try:
+    #the program execution will move to the except clause and done
+    #try: run this code
+    #except: execute this code when there's an exception
+        number = int(input('enter a whole positive integer (1-1000). to quit, enter -1: \n'))
+    #\n writes string to file
+        count = loop_count(number)
+        print('the loop executed', count, 'times.')
+    except Exception as e:
+#when code in try clause causes error, program moves to except clause
+#except accepts ALL exceptions whereas except Exception as e only accepts what you're MEANT to catch
+        exit()
+
+#SECOND METHOD
+import sys
+lst = []
+def hailstone(number):
+    global lst
+#global allows you to modify the variable outside of the current scope
+#creates a global variable and make changes to the variable in a local context.
+#scope: the area of code where variables can be used
+#rules of global keyword:
+    #when we create a variable inside a function, it is local by default.
+    #when we define a variable outside of a function, it's global by default. you don't have to use global keyword.
+    #we use global keyword to read and write a global variable inside a function
+    #use of global keyword outside a function has no effect.
+    if number > 1:
+        if number % 2 == 0:
+            lst.append(number // 2)
+            hailstone(lst[len(lst) - 1])
+        else:
+            lst.append(number * 3 + 1)
+            hailstone(lst[len(lst) - 1])
+    return lst
+number = int(input('Enter a whole positive integer. To quit, enter -1: '))
+if number <= 0 or number == 0:
+    print('Thank you for playing Hailstone.')
+    sys.exit()
+#sys.exit because we didn't import exit from sys
+else:
+    answers = hailstone(number)
+    for answer in answers:
+        print(answer)
+    print('The loop executed {} times.'.format(len(answers) + 1))
+#formats the specified value(s) and insert them inside the string's placeholder
