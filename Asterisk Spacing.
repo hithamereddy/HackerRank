@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 #first method
 x = ["*", "*", "*", "*", "*", "*", "*"]
 for i in x[:]:
