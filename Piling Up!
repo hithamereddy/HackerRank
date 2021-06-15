@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+x = []
+T = int(input())
+
+for i in range(T):
+    n = int(input())
+    sl = list(map(int, input().split()))
+
+    for i in range(n-1):
+        if sl[0] >= sl[len(sl)-1]:
+            a = sl[0]
+            sl.pop(0)
+        elif sl[0] < sl[len(sl)-1]:
+            a = sl[len(sl)-1]
+            sl.pop(len(sl)-1)
+        else:
+            pass
+
+        if len(sl) == 1:
+            x.append("Yes")
+
+        if((sl[0] > a) or (sl[len(sl)-1] > a)):
+            x.append("No")
+            break
+
+print("\n".join(x))
